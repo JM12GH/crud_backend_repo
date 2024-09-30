@@ -29,34 +29,23 @@ class StudentCategoryController extends Controller
         return new StudentCategoryResource($studentcategory);
     }
 
-    public function show($id): JsonResponse|StudentCategoryResource
+    public function show($id): StudentCategoryResource
     {
-        $studentCategory = StudentCategory::find($id);
-        if (!$studentCategory) {
-            return response()->json(['error' => 'Student category not found'], 404);
-        }
+        $studentCategory = StudentCategory::findOrFail($id);
         return new StudentCategoryResource($studentCategory);
     }
 
-    public function update(StudentCategoryRequest $request, $id): JsonResponse|StudentCategoryResource
+    public function update(StudentCategoryRequest $request, $id): StudentCategoryResource
     {
-        $studentCategory = StudentCategory::find($id);
-        if (!$studentCategory) {
-            return response()->json(['error' => 'Student category not found'], 404);
-        }
-
+        $studentCategory = StudentCategory::findOrFail($id);
         $updatedCategory = $this->studentcategoryService->update($request->validated(), $studentCategory);
         return new StudentCategoryResource($updatedCategory);
     }
 
     public function destroy($id): JsonResponse
     {
-        $studentCategory = StudentCategory::find($id);
-        if (!$studentCategory) {
-            return response()->json(['error' => 'Student category not found'], 404);
-        }
-
+        $studentCategory = StudentCategory::findOrFail($id);
         $this->studentcategoryService->delete($studentCategory);
-        return response()->json(['message' => 'Student category deleted successfully']);
+        return response()->json(['message' => 'Student category deleted successfully'], 204);
     }
 }

@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static paginate(array|string|null $perPage)
  * @method static create(array $data)
  * @method static find(int $id)
+ * @method static findOrFail($id)
  */
 class StudentCategory extends Model
 {

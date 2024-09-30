@@ -29,33 +29,22 @@ class BookCategoryController extends Controller
         return new BookCategoryResource($bookcategory);
     }
 
-    public function show($id): BookCategoryResource|JsonResponse
+    public function show($id): BookCategoryResource
     {
-        $bookCategory = BookCategory::find($id);
-        if (!$bookCategory) {
-            return response()->json(['error' => 'Book category not found'], 404);
-        }
+        $bookCategory = BookCategory::findOrFail($id);
         return new BookCategoryResource($bookCategory);
     }
 
-    public function update(BookCategoryRequest $request, $id): BookCategoryResource|JsonResponse
+    public function update(BookCategoryRequest $request, $id): BookCategoryResource
     {
-        $bookCategory = BookCategory::find($id);
-        if (!$bookCategory) {
-            return response()->json(['error' => 'Book category not found'], 404);
-        }
-
+        $bookCategory = BookCategory::findOrFail($id);
         $updatedCategory = $this->bookcategoryService->update($request->validated(), $bookCategory);
         return new BookCategoryResource($updatedCategory);
     }
 
     public function destroy($id): JsonResponse
     {
-        $bookCategory = BookCategory::find($id);
-        if (!$bookCategory) {
-            return response()->json(['error' => 'Book category not found'], 404);
-        }
-
+        $bookCategory = BookCategory::findOrFail($id);
         $this->bookcategoryService->delete($bookCategory);
         return response()->json(null, 204);
     }
