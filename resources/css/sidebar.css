@@ -1,0 +1,38 @@
+.sidebar {
+    top: 60px;
+    left: 0;
+    width: 120px;
+    height: calc(100vh - 60px);
+    background-color: #535354;
+    position: fixed;
+    transition: transform 0.3s ease;
+    z-index: 1050; /* Ensure it is above other content */
+}
+
+.sidebar.collapsed {
+    transform: translateX(-100%);
+}
+
+/* Ensure content is correctly adjusted */
+.main-content.sidebar-expanded {
+    margin-left: 120px; /* Adjust this value to match sidebar width */
+}
+
+
+/* Ensure the content shifts correctly */
+.content {
+    margin-left: 120px;
+    transition: margin-left 0.3s ease;
+}
+
+/* Optional: For better visibility of the sidebar links */
+.nav-link {
+    color: #fff;
+    padding-top: 30px; /* Adjust this value to move the links down */
+}
+
+.nav-link:hover {
+    color: #adb5bd;
+}
+
+  

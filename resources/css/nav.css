@@ -1,0 +1,16 @@
+.navbar {
+    background-color: #bb4de3;
+    height: 60px;
+    width: 100%;
+    right: 0px;
+    position: fixed;
+}
+
+.btnpos {
+    margin-left: 20px;
+}
+
+.hpos {
+    color: white;
+    margin-left: 12px;
+}

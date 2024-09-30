@@ -1,0 +1,71 @@
+body {
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+  
+  margin: 0; /* Ensure there's no default margin */
+  padding: 0; /* Ensure there's no default padding */
+}
+
+.container-fluid {
+  padding: 0; /* Remove default padding */
+}
+
+.main-content {
+  margin-top: 60px;
+  margin-left: 90px; 
+  width: calc(100% - 90px);
+  max-width: calc(100% - 90px);
+  transition: margin-left 0.3s ease;
+}
+
+.fixed-card {
+  position: fixed;
+  width: calc(100% - 130px); 
+  max-height: calc(100vh - 70px); 
+  overflow-y: auto; 
+}
+
+.fixed-content {
+  position: fixed;
+  width: calc(100% - 140px); 
+}
+
+@media (max-width: 992px) { /* Medium and small screens */
+  .main-content {
+    margin-left: 0; 
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .fixed-card {
+    width: 90%;
+    }
+
+  .fixed-content {
+    width: 90%;
+   
+  }
+
+}
+  @media (min-width: 992px) and (max-width: 1050px) {
+  /* Styles for screens from 992px to 1200px */
+  .main-content {
+    margin-left: 0; 
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .fixed-card {
+    position: fixed;
+    margin-left: 85px;
+    width: calc(100% - 150px); 
+    max-height: calc(100vh - 150px); 
+    overflow-y: auto; 
+  }
+
+  .fixed-content {
+    position: fixed;
+    margin-left: 85px;
+    width: calc(100% - 150px); 
+}}
