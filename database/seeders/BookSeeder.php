@@ -26,11 +26,10 @@ class BookSeeder extends Seeder
             $authors->random(2)->pluck('id')->toArray()
         );
 
-        $category = rand(0, 1) === 1
-            ? $bookCategories->random()
-            : null;
-
-        $book->bookCategory()->associate($category);
+        $bookcategory = $bookCategories->random();
+        $book->bookCategory()->associate($bookcategory);
         $book->save();
+
+
     }
 }
