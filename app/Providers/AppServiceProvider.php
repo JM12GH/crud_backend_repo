@@ -17,6 +17,6 @@ return new CustomHandler($app);
 
 public function boot()
 {
-// Other bootstrapping code...
+
 }
 }

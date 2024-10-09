@@ -11,24 +11,22 @@ use Throwable;
 
 class Handler extends ExceptionHandler
 {
-
     public function render($request, Throwable $e): JsonResponse|Response
     {
         // Handle 404 NotFoundHttpException
-        if ($e instanceof NotFoundHttpException && $request->is('api/*')) {
+        if ($e instanceof NotFoundHttpException) {
             return response()->json([
                 'message' => 'Record not found.'
             ], 404);
         }
 
         // Handle ModelNotFoundException
-        if ($e instanceof ModelNotFoundException && $request->is('api/*')) {
+        if ($e instanceof ModelNotFoundException) {
             return response()->json([
                 'message' => 'Record not found.'
             ], 404);
         }
 
-        // For all other exceptions, use the default Laravel rendering
         return parent::render($request, $e);
     }
 }
